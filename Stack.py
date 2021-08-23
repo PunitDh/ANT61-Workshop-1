@@ -11,6 +11,7 @@ class Stack():
             last_item = self.list[-1]
             self.list = self.list[0:len(self.list)-1]
             return last_item
+        # end if
     # end pop
     
     def push(self, item):
@@ -18,13 +19,17 @@ class Stack():
     # end push
     
     def max(self):
-        current_max = self.list[0]
-        for element in self.list:
-            if element > current_max:
-                current_max = element
-            # end if
-        # end for
-        return current_max
+        if len(self.list) == 0:
+            return None
+        else:
+            current_max = self.list[0]
+            for element in self.list:
+                if element > current_max:
+                    current_max = element
+                # end if
+            # end for
+            return current_max
+        # end if
     # end max
     
     def isEmpty(self):
@@ -36,6 +41,7 @@ class Stack():
             return self.list[-1]
         else:
             return None
+        # end if
     # end last
 
     def first(self):
@@ -43,6 +49,7 @@ class Stack():
             return self.list[0]
         else:
             return None
+        # end if
     # end first
 
     def length(self):
