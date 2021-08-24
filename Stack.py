@@ -2,6 +2,7 @@ class Stack():
     
     def __init__(self, list=[]):
         self.list = list
+        self.length = lambda: len(self.list)
     # end __init__
     
     def pop(self):
@@ -15,7 +16,7 @@ class Stack():
     # end pop
     
     def push(self, item):
-        self.list.extend(item)
+        self.list.append(item)
     # end push
     
     def max(self):
@@ -51,9 +52,15 @@ class Stack():
             return None
         # end if
     # end first
-
-    def length(self):
-        return len(self.list)
-    # end length
+    
+    def uniq(self):
+        uniq_list = []
+        for item in self.list:
+            if not item in uniq_list:
+                uniq_list.append(item)
+            # end if
+        # end for
+        return uniq_list
+    # end uniq
     
 # end Stack
