@@ -6,13 +6,9 @@ class Stack():
     # end __init__
     
     def pop(self):
-        if len(self.list) == 0:
-            return None
-        else:
-            last_item = self.list[-1]
-            self.list = self.list[0:len(self.list)-1]
-            return last_item
-        # end if
+        last_item = self.list[-1]
+        del(self.list[-1])
+        return last_item
     # end pop
     
     def push(self, item):
