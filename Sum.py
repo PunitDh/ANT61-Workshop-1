@@ -41,7 +41,7 @@ def max_possible_sum_old(nlist):
             sums.append(sum(nlist[i:j+1]))
     sum_matrix.append(indices)
     sum_matrix.append(sums)
-
+    
     max_sum_range = sum_matrix[0][sum_matrix[1].index(max(sums))]
         
     return max_sum_range
@@ -77,8 +77,33 @@ def max_possible_sum(nlist):
             sums[0].append(sum(nlist[l:r+1]))
             sums[1].append((l,r))
             l -= 1
-
+    else:
+        return sums[1][sums[0].index(max(sums[0]))]
+    
     return sums[1][sums[0].index(max(sums[0]))]
     
     
+# end max_possible_sum
+
+
+def max_possible_sum_o_n(nlist):
+    l = 0
+    r = 0
+    s = 0
+    current_max_sum = -99999999999999999999999999999999999999999999999
+    max_end = 0
+    length = len(nlist)
+    
+    for i in range(0,length):
+        max_end += nlist[i]
+        
+        if current_max_sum < max_end:
+            current_max_sum = max_end
+            l = s
+            r = i
+        
+        if max_end < 0:
+            max_end = 0
+            s = i + 1
+    return (l,r)
 # end max_possible_sum

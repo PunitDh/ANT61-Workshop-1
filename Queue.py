@@ -1,8 +1,11 @@
+from MaxStack import MaxStack
+
 class Queue:
     
     def __init__(self, list=[]):
         self.list = list
         self.length = lambda: len(list)
+        self.max_stack = MaxStack(list)
     # end __init__
     
     def pop(self):
@@ -10,13 +13,15 @@ class Queue:
             return None
         else:
             first_element = self.list[0]
-            self.list = self.list[1:len(self.list)]
+            del(self.list[0])
+            self.max_stack.pop()
             return first_element
         # end if
     # end pop
     
     def push(self,item):
         self.list.append(item)
+        self.max_stack.push(item)
     # end push
     
     def calc_sum(self):
@@ -28,17 +33,7 @@ class Queue:
     # end sum
     
     def max(self):
-        if len(self.list) == 0:
-            return None
-        else:
-            current_max = self.list[0]
-            for element in self.list:
-                if element > current_max:
-                    current_max = element
-                # end if
-            # end for
-            return current_max
-        # end if
+        return self.max_stack.max()
     # end max
     
 # end Queue
